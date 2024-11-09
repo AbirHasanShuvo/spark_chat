@@ -11,6 +11,7 @@ void main() async {
 Future<void> setUp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupFirebase();
+  await registerServices();
 }
 
 class MyApp extends StatelessWidget {

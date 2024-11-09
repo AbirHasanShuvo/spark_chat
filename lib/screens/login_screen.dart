@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:spark_chat/const/const.dart';
+import 'package:spark_chat/services/auth_services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,12 +13,21 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  final GetIt getIt = GetIt.instance;
+  late AuthServices _authServices;
+
+  @override
+  void initState() {
+    _authServices = getIt.get<AuthServices>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = screeenHeight(context);
     var width = screeenWidth(context);
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.blueGrey,
@@ -91,11 +102,23 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black)),
-                onPressed: () {
+                onPressed: () async {
                   if (emailController.text.isEmpty) {
-                    VxToast.show(context, msg: 'No Hello World');
+                    VxToast.show(
+                      context,
+                      msg: 'email required',
+                    );
+                  } else if (passwordController.text.isEmpty) {
+                    VxToast.show(
+                      context,
+                      msg: 'password required',
+                    );
                   } else {
-                    VxToast.show(context, msg: 'Hello World');
+                    bool result = await _authServices.login(
+                        emailController.text, passwordController.text);
+                    print(result);
+                    if (result) {
+                    } else {}
                   }
                 },
                 child: Text(

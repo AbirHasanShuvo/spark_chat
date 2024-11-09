@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "180967353053",
+    "project_id": "sparkchat-9e8a0",
+    "storage_bucket": "sparkchat-9e8a0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180967353053:android:5cebc3e84a0fac44e18934",
+        "android_client_info": {
+          "package_name": "com.example.spark_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBbGXOVHL-54RAJPpbh-GqExK74DDI1Sw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
